@@ -348,7 +348,7 @@ module.exports = {
 				tracingJs += render(_contexts_[vendor]);
 			}
 
-			var jspath = path.join(this.output.root(), '_gitbook_plugin_analytics.js');
+			var jspath = path.join(this.output.root(), 'gitbook_plugin_analytics.js');
 			fs.writeFileSync(jspath, tracingJs);
 
 		} catch(ex) { console.log(ex.stack) }
@@ -356,7 +356,7 @@ module.exports = {
 
 		'page': function(page) {
 			var n = page.path.split(path.sep).length - 1;
-			var src = '../'.repeat(n) + '_gitbook_plugin_analytics.js';
+			var src = '../'.repeat(n) + 'gitbook_plugin_analytics.js';
 			page.content += '<script src="' + src + '"></' + 'script>';
 			return page;
 		}
