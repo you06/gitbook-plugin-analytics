@@ -4,8 +4,8 @@ if (GA_TOKEN) {
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-	ga('create', GA_TOKEN, 'auto');
-	ga('send', 'pageview');
+	ga('create', GA_TOKEN, 'auto', 'tracker');
+	ga('tracker.send', 'pageview');
 
 	let startState = window.history.state;
 	setInterval(function() {
@@ -18,8 +18,8 @@ if (GA_TOKEN) {
 		}
 
 		if (startState.path !== nowState.path) {
-			ga('set', 'page', nowState.path);
-			ga('send', 'pageview');
+			ga('tracker.set', 'page', nowState.path);
+			ga('tracker.send', 'pageview');
 			startState = nowState;
 		}
 	}, 33)
