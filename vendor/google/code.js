@@ -6,4 +6,21 @@ if (GA_TOKEN) {
 
 	ga('create', GA_TOKEN, 'auto');
 	ga('send', 'pageview');
+
+	let startState = window.history.state;
+	setInterval(function() {
+		let nowState = window.history.state;
+		if (!nowState) {
+			return;
+		}
+		if (!startState) {
+			startState = nowState;
+		}
+
+		if (startState.path !== nowState.path) {
+			ga('set', 'page', nowState.path);
+			ga('send', 'pageview');
+			startState = nowState;
+		}
+	}, 33)
 }
